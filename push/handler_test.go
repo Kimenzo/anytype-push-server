@@ -7,28 +7,28 @@ import (
 	"testing"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/metric"
-	"github.com/anyproto/any-sync/net/peer"
-	"github.com/anyproto/any-sync/net/rpc/rpctest"
-	"github.com/anyproto/any-sync/util/crypto"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/metric"
+	"github.com/Kimenzo/any-sync/net/peer"
+	"github.com/Kimenzo/any-sync/net/rpc/rpctest"
+	"github.com/Kimenzo/any-sync/util/crypto"
 	"github.com/mr-tron/base58"
 
-	"github.com/anyproto/any-sync/testutil/accounttest"
+	"github.com/Kimenzo/any-sync/testutil/accounttest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/pushclient/pushapi"
-	"github.com/anyproto/anytype-push-server/queue"
-	"github.com/anyproto/anytype-push-server/queue/mock_queue"
-	"github.com/anyproto/anytype-push-server/repo/accountrepo"
-	"github.com/anyproto/anytype-push-server/repo/accountrepo/mock_accountrepo"
-	"github.com/anyproto/anytype-push-server/repo/spacerepo"
-	"github.com/anyproto/anytype-push-server/repo/spacerepo/mock_spacerepo"
-	"github.com/anyproto/anytype-push-server/repo/tokenrepo"
-	"github.com/anyproto/anytype-push-server/repo/tokenrepo/mock_tokenrepo"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/pushclient/pushapi"
+	"github.com/Kimenzo/anytype-push-server/queue"
+	"github.com/Kimenzo/anytype-push-server/queue/mock_queue"
+	"github.com/Kimenzo/anytype-push-server/repo/accountrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/accountrepo/mock_accountrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/spacerepo"
+	"github.com/Kimenzo/anytype-push-server/repo/spacerepo/mock_spacerepo"
+	"github.com/Kimenzo/anytype-push-server/repo/tokenrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/tokenrepo/mock_tokenrepo"
 )
 
 var ctx = context.Background()
@@ -360,3 +360,4 @@ func (t testConfig) Name() (name string) {
 func (t testConfig) GetMetric() metric.Config {
 	return metric.Config{}
 }
+

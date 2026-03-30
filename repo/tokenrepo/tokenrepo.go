@@ -1,4 +1,4 @@
-//go:generate mockgen -destination mock_tokenrepo/mock_tokenrepo.go github.com/anyproto/anytype-push-server/repo/tokenrepo TokenRepo
+//go:generate mockgen -destination mock_tokenrepo/mock_tokenrepo.go github.com/Kimenzo/anytype-push-server/repo/tokenrepo TokenRepo
 
 package tokenrepo
 
@@ -7,13 +7,13 @@ import (
 	"errors"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/domain"
 )
 
 const CName = "push.toknenrepo"
@@ -128,3 +128,4 @@ func (t *tokenRepo) GetActiveTokensByAccountIds(ctx context.Context, accountIds 
 func (t *tokenRepo) Close(ctx context.Context) (err error) {
 	return nil
 }
+

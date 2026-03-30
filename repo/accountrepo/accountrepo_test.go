@@ -5,12 +5,12 @@ import (
 	"crypto/rand"
 	"testing"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/domain"
 )
 
 var ctx = context.Background()
@@ -113,3 +113,4 @@ func (t testConfig) Name() (name string) {
 func (t testConfig) GetMongo() db.Mongo {
 	return t.Mongo
 }
+

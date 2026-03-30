@@ -1,6 +1,6 @@
 package domain
 
-import "github.com/anyproto/anytype-push-server/pushclient/pushapi"
+import "github.com/Kimenzo/anytype-push-server/pushclient/pushapi"
 
 type Platform uint8
 
@@ -36,3 +36,4 @@ type Token struct {
 	Created   int64       `bson:"created"`
 	Updated   int64       `bson:"updated"`
 }
+

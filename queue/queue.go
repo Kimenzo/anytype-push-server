@@ -1,4 +1,4 @@
-//go:generate mockgen -destination mock_queue/mock_queue.go github.com/anyproto/anytype-push-server/queue Queue
+//go:generate mockgen -destination mock_queue/mock_queue.go github.com/Kimenzo/anytype-push-server/queue Queue
 
 package queue
 
@@ -8,14 +8,14 @@ import (
 	"time"
 
 	"github.com/adjust/rmq/v5"
-	"github.com/anyproto/any-sync/accountservice"
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/accountservice"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/redisprovider"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/redisprovider"
 )
 
 const CName = "push.queue"
@@ -133,3 +133,4 @@ func (q *queue) Close(ctx context.Context) (err error) {
 	}
 	return nil
 }
+

@@ -8,17 +8,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
-	"github.com/anyproto/any-sync/metric"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/metric"
 	"github.com/cheggaaa/mb/v3"
 	"github.com/prometheus/client_golang/prometheus"
 	"go.uber.org/zap"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/queue"
-	"github.com/anyproto/anytype-push-server/repo/accountrepo"
-	"github.com/anyproto/anytype-push-server/repo/tokenrepo"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/queue"
+	"github.com/Kimenzo/anytype-push-server/repo/accountrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/tokenrepo"
 )
 
 const CName = "push.sender"
@@ -184,3 +184,4 @@ func (s *sender) removeTokensBatch() {
 func (s *sender) Close(ctx context.Context) (err error) {
 	return s.invalidTokens.Close()
 }
+

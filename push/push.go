@@ -6,22 +6,22 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
-	"github.com/anyproto/any-sync/metric"
-	"github.com/anyproto/any-sync/net/peer"
-	"github.com/anyproto/any-sync/net/rpc/server"
-	"github.com/anyproto/any-sync/util/crypto"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/metric"
+	"github.com/Kimenzo/any-sync/net/peer"
+	"github.com/Kimenzo/any-sync/net/rpc/server"
+	"github.com/Kimenzo/any-sync/util/crypto"
 	"github.com/mr-tron/base58"
 
 	"go.uber.org/zap"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/pushclient/pushapi"
-	"github.com/anyproto/anytype-push-server/queue"
-	"github.com/anyproto/anytype-push-server/repo/accountrepo"
-	"github.com/anyproto/anytype-push-server/repo/spacerepo"
-	"github.com/anyproto/anytype-push-server/repo/tokenrepo"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/pushclient/pushapi"
+	"github.com/Kimenzo/anytype-push-server/queue"
+	"github.com/Kimenzo/anytype-push-server/repo/accountrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/spacerepo"
+	"github.com/Kimenzo/anytype-push-server/repo/tokenrepo"
 )
 
 const CName = "push"
@@ -332,3 +332,4 @@ func convertTopics(topics *pushapi.Topics) (result []domain.Topic, err error) {
 	}
 	return
 }
+

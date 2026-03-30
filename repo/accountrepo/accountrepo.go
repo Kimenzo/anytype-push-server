@@ -1,4 +1,4 @@
-//go:generate mockgen -destination mock_accountrepo/mock_accountrepo.go github.com/anyproto/anytype-push-server/repo/accountrepo AccountRepo
+//go:generate mockgen -destination mock_accountrepo/mock_accountrepo.go github.com/Kimenzo/anytype-push-server/repo/accountrepo AccountRepo
 
 package accountrepo
 
@@ -7,13 +7,13 @@ import (
 	"errors"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/domain"
 )
 
 const CName = "push.accountrepo"
@@ -107,3 +107,4 @@ func (r *accountRepo) GetTopicsByAccountId(ctx context.Context, accountId string
 func (r *accountRepo) Close(ctx context.Context) error {
 	return nil
 }
+

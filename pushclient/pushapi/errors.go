@@ -3,7 +3,7 @@ package pushapi
 import (
 	"errors"
 
-	"github.com/anyproto/any-sync/net/rpc/rpcerr"
+	"github.com/Kimenzo/any-sync/net/rpc/rpcerr"
 )
 
 var (
@@ -15,3 +15,4 @@ var (
 	ErrSpaceExists           = errGroup.Register(errors.New("space already exists"), uint64(ErrCodes_SpaceExists))
 	ErrNoValidTopics         = errGroup.Register(errors.New("no valid topics"), uint64(ErrCodes_NoValidTopics))
 )
+

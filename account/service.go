@@ -1,10 +1,10 @@
 package account
 
 import (
-	commonaccount "github.com/anyproto/any-sync/accountservice"
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/commonspace/object/accountdata"
-	"github.com/anyproto/any-sync/util/crypto"
+	commonaccount "github.com/Kimenzo/any-sync/accountservice"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/commonspace/object/accountdata"
+	"github.com/Kimenzo/any-sync/util/crypto"
 )
 
 type service struct {
@@ -45,3 +45,4 @@ func (s *service) Init(a *app.App) (err error) {
 func (s *service) Name() (name string) {
 	return commonaccount.CName
 }
+

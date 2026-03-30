@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/testutil/accounttest"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/testutil/accounttest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/redisprovider/testredisprovider"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/redisprovider/testredisprovider"
 )
 
 var ctx = context.Background()
@@ -59,3 +59,4 @@ func newFixture(t *testing.T) *fixture {
 	})
 	return fx
 }
+

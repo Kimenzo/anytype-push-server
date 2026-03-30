@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/anyproto/any-sync/metric"
-	"github.com/anyproto/any-sync/net/peer"
+	"github.com/Kimenzo/any-sync/metric"
+	"github.com/Kimenzo/any-sync/net/peer"
 	"go.uber.org/zap"
 
-	"github.com/anyproto/anytype-push-server/pushclient/pushapi"
+	"github.com/Kimenzo/anytype-push-server/pushclient/pushapi"
 )
 
 var _ pushapi.DRPCPushServer = (*handler)(nil)
@@ -169,3 +169,4 @@ func (h *handler) NotifySilent(ctx context.Context, req *pushapi.NotifyRequest) 
 	}
 	return &pushapi.Ok{}, nil
 }
+

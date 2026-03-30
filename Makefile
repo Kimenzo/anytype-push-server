@@ -7,8 +7,8 @@ BUILD_GOARCH:=$(shell go env GOARCH)
 
 
 build:
-	@$(eval FLAGS := $$(shell PATH=$(PATH) govvv -flags -pkg github.com/anyproto/any-sync/app))
-	GOOS=$(BUILD_GOOS) GOARCH=$(BUILD_GOARCH) go build $(TAGS) -v -o bin/anytype-push-server -ldflags "$(FLAGS) -X github.com/anyproto/any-sync/app.AppName=anytype-push-server" github.com/anyproto/anytype-push-server/cmd/server
+	@$(eval FLAGS := $$(shell PATH=$(PATH) govvv -flags -pkg github.com/Kimenzo/any-sync/app))
+	GOOS=$(BUILD_GOOS) GOARCH=$(BUILD_GOARCH) go build $(TAGS) -v -o bin/anytype-push-server -ldflags "$(FLAGS) -X github.com/Kimenzo/any-sync/app.AppName=anytype-push-server" github.com/Kimenzo/anytype-push-server/cmd/server
 
 test:
 	go test ./... --cover
@@ -49,4 +49,5 @@ deps:
 
 proto:
 	$(call generate_drpc,,pushclient/pushapi/protos)
+
 

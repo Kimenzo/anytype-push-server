@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readconcern"
@@ -86,3 +86,4 @@ func (d *database) Tx(ctx context.Context, f func(txCtx mongo.SessionContext) er
 func (d *database) Close(ctx context.Context) error {
 	return d.db.Client().Disconnect(ctx)
 }
+

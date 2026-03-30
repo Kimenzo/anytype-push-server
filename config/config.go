@@ -3,19 +3,19 @@ package config
 import (
 	"os"
 
-	"github.com/anyproto/any-sync/accountservice"
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/metric"
-	"github.com/anyproto/any-sync/net/rpc"
-	"github.com/anyproto/any-sync/net/secureservice"
-	"github.com/anyproto/any-sync/net/transport/quic"
-	"github.com/anyproto/any-sync/net/transport/yamux"
-	"github.com/anyproto/any-sync/nodeconf"
+	"github.com/Kimenzo/any-sync/accountservice"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/metric"
+	"github.com/Kimenzo/any-sync/net/rpc"
+	"github.com/Kimenzo/any-sync/net/secureservice"
+	"github.com/Kimenzo/any-sync/net/transport/quic"
+	"github.com/Kimenzo/any-sync/net/transport/yamux"
+	"github.com/Kimenzo/any-sync/nodeconf"
 	"gopkg.in/yaml.v3"
 
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/redisprovider"
-	"github.com/anyproto/anytype-push-server/sender/provider/fcm"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/redisprovider"
+	"github.com/Kimenzo/anytype-push-server/sender/provider/fcm"
 )
 
 const CName = "config"
@@ -101,3 +101,4 @@ func (c *Config) GetFCM() fcm.Config {
 func (c *Config) GetMetric() metric.Config {
 	return c.Metric
 }
+

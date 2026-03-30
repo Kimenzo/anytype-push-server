@@ -11,36 +11,36 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
-	"github.com/anyproto/any-sync/coordinator/coordinatorclient"
-	"github.com/anyproto/any-sync/coordinator/nodeconfsource"
-	"github.com/anyproto/any-sync/metric"
-	"github.com/anyproto/any-sync/nameservice/nameserviceclient"
-	"github.com/anyproto/any-sync/net/peerservice"
-	"github.com/anyproto/any-sync/net/pool"
-	"github.com/anyproto/any-sync/net/rpc/server"
-	"github.com/anyproto/any-sync/net/secureservice"
-	"github.com/anyproto/any-sync/net/transport/quic"
-	"github.com/anyproto/any-sync/net/transport/yamux"
-	"github.com/anyproto/any-sync/nodeconf"
-	"github.com/anyproto/any-sync/nodeconf/nodeconfstore"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/coordinator/coordinatorclient"
+	"github.com/Kimenzo/any-sync/coordinator/nodeconfsource"
+	"github.com/Kimenzo/any-sync/metric"
+	"github.com/Kimenzo/any-sync/nameservice/nameserviceclient"
+	"github.com/Kimenzo/any-sync/net/peerservice"
+	"github.com/Kimenzo/any-sync/net/pool"
+	"github.com/Kimenzo/any-sync/net/rpc/server"
+	"github.com/Kimenzo/any-sync/net/secureservice"
+	"github.com/Kimenzo/any-sync/net/transport/quic"
+	"github.com/Kimenzo/any-sync/net/transport/yamux"
+	"github.com/Kimenzo/any-sync/nodeconf"
+	"github.com/Kimenzo/any-sync/nodeconf/nodeconfstore"
 
 	// import this to keep govvv in go.mod on mod tidy
 	_ "github.com/ahmetb/govvv/integration-test/app-different-package/mypkg"
 	"go.uber.org/zap"
 
-	"github.com/anyproto/anytype-push-server/account"
-	"github.com/anyproto/anytype-push-server/config"
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/push"
-	"github.com/anyproto/anytype-push-server/queue"
-	"github.com/anyproto/anytype-push-server/redisprovider"
-	"github.com/anyproto/anytype-push-server/repo/accountrepo"
-	"github.com/anyproto/anytype-push-server/repo/spacerepo"
-	"github.com/anyproto/anytype-push-server/repo/tokenrepo"
-	"github.com/anyproto/anytype-push-server/sender"
-	"github.com/anyproto/anytype-push-server/sender/provider/fcm"
+	"github.com/Kimenzo/anytype-push-server/account"
+	"github.com/Kimenzo/anytype-push-server/config"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/push"
+	"github.com/Kimenzo/anytype-push-server/queue"
+	"github.com/Kimenzo/anytype-push-server/redisprovider"
+	"github.com/Kimenzo/anytype-push-server/repo/accountrepo"
+	"github.com/Kimenzo/anytype-push-server/repo/spacerepo"
+	"github.com/Kimenzo/anytype-push-server/repo/tokenrepo"
+	"github.com/Kimenzo/anytype-push-server/sender"
+	"github.com/Kimenzo/anytype-push-server/sender/provider/fcm"
 )
 
 var log = logger.NewNamed("push.main")
@@ -132,3 +132,4 @@ func Bootstrap(a *app.App) {
 		Register(quic.New()).
 		Register(yamux.New())
 }
+

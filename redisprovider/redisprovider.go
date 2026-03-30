@@ -3,7 +3,7 @@ package redisprovider
 import (
 	"context"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -62,3 +62,4 @@ func (r *redisProvider) Close(ctx context.Context) (err error) {
 	}
 	return
 }
+

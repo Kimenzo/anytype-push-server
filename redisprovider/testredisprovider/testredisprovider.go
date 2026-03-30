@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"github.com/redis/go-redis/v9"
 
-	"github.com/anyproto/anytype-push-server/redisprovider"
+	"github.com/Kimenzo/anytype-push-server/redisprovider"
 )
 
 func NewTestRedisProvider() *TestRedisProvider {
@@ -67,3 +67,4 @@ func (t *TestRedisProvider) WithFLush(flushOnStart bool) *TestRedisProvider {
 	t.flushOnStart = flushOnStart
 	return t
 }
+

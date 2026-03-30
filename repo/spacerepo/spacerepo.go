@@ -1,4 +1,4 @@
-//go:generate mockgen -destination mock_spacerepo/mock_spacerepo.go github.com/anyproto/anytype-push-server/repo/spacerepo SpaceRepo
+//go:generate mockgen -destination mock_spacerepo/mock_spacerepo.go github.com/Kimenzo/anytype-push-server/repo/spacerepo SpaceRepo
 
 package spacerepo
 
@@ -7,13 +7,13 @@ import (
 	"errors"
 	"time"
 
-	"github.com/anyproto/any-sync/app"
+	"github.com/Kimenzo/any-sync/app"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/anyproto/anytype-push-server/db"
-	"github.com/anyproto/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/db"
+	"github.com/Kimenzo/anytype-push-server/domain"
 )
 
 var (
@@ -105,3 +105,4 @@ func (r *spaceRepo) ExistedSpaces(ctx context.Context, spaceIds []string) (exist
 func (r *spaceRepo) Close(ctx context.Context) error {
 	return nil
 }
+

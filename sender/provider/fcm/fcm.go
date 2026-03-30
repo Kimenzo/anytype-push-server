@@ -7,13 +7,13 @@ import (
 
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/messaging"
-	"github.com/anyproto/any-sync/app"
-	"github.com/anyproto/any-sync/app/logger"
+	"github.com/Kimenzo/any-sync/app"
+	"github.com/Kimenzo/any-sync/app/logger"
 	"go.uber.org/zap"
 	"google.golang.org/api/option"
 
-	"github.com/anyproto/anytype-push-server/domain"
-	"github.com/anyproto/anytype-push-server/sender"
+	"github.com/Kimenzo/anytype-push-server/domain"
+	"github.com/Kimenzo/anytype-push-server/sender"
 )
 
 const CName = "push.provider.fcm"
@@ -178,3 +178,4 @@ func (f *fcmSender) buildFcmAndroidSilentMessage(message domain.Message) *messag
 		Data:   message.Data,
 	}
 }
+
