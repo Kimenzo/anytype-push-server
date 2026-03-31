@@ -26,7 +26,6 @@ func TestSpaceRepo_Create(t *testing.T) {
 }
 
 func TestSpaceRepo_ExistedSpaces(t *testing.T) {
-	t.Skip()
 	fx := newFixture(t)
 	require.NoError(t, fx.Create(ctx, domain.Space{
 		Id:     "1",
@@ -102,4 +101,3 @@ func (t testConfig) Name() (name string) {
 func (t testConfig) GetMongo() db.Mongo {
 	return t.Mongo
 }
-

@@ -78,9 +78,6 @@ type doc struct {
 }
 
 func (r *spaceRepo) ExistedSpaces(ctx context.Context, spaceIds []string) (existedIds []string, err error) {
-	// TODO: we're temporary skip this check because 1-1 spaces not able to register spaces yet
-	return spaceIds, nil
-
 	cursor, err := r.coll.Find(
 		ctx,
 		bson.D{{"_id", bson.D{{"$in", spaceIds}}}},
@@ -105,4 +102,3 @@ func (r *spaceRepo) ExistedSpaces(ctx context.Context, spaceIds []string) (exist
 func (r *spaceRepo) Close(ctx context.Context) error {
 	return nil
 }
-

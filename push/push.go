@@ -183,7 +183,7 @@ func (p *push) CreateSpace(ctx context.Context, key []byte, signature []byte) (e
 	if errors.Is(err, spacerepo.ErrSpaceExists) {
 		err = pushapi.ErrSpaceExists
 	}
-	return nil
+	return err
 }
 
 func (p *push) RemoveSpace(ctx context.Context, key []byte, signature []byte) (err error) {
@@ -198,10 +198,7 @@ func (p *push) RemoveSpace(ctx context.Context, key []byte, signature []byte) (e
 		Id:     base58.Encode(key),
 		Author: accPubKey.Account(),
 	})
-	if errors.Is(err, spacerepo.ErrSpaceExists) {
-		err = pushapi.ErrSpaceExists
-	}
-	return nil
+	return err
 }
 
 func checkSpaceSignature(identity string, spaceKey, signature []byte) error {
@@ -332,4 +329,3 @@ func convertTopics(topics *pushapi.Topics) (result []domain.Topic, err error) {
 	}
 	return
 }
-

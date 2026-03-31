@@ -259,6 +259,110 @@ func TestHandler_Notify(t *testing.T) {
 	})
 }
 
+func TestHandler_CreateSpace(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
+		fx := newFixture(t)
+		acc := newAccount()
+		spaceKey, signature := newSpaceRegistration(acc.GetPublic().Account())
+
+		ak, _ := acc.GetPublic().Marshall()
+		pCtx := peer.CtxWithIdentity(ctx, ak)
+
+		fx.spaceRepo.EXPECT().Create(pCtx, domain.Space{
+			Id:     base58.Encode(spaceKey),
+			Author: acc.GetPublic().Account(),
+		}).Return(nil)
+
+		resp, err := fx.handler.CreateSpace(pCtx, &pushapi.CreateSpaceRequest{
+			SpaceKey:         spaceKey,
+			AccountSignature: signature,
+		})
+		require.NoError(t, err)
+		assert.NotNil(t, resp)
+	})
+
+	t.Run("invalid-signature", func(t *testing.T) {
+		fx := newFixture(t)
+		acc := newAccount()
+		spaceKey, _ := newSpaceRegistration(acc.GetPublic().Account())
+
+		ak, _ := acc.GetPublic().Marshall()
+		pCtx := peer.CtxWithIdentity(ctx, ak)
+
+		resp, err := fx.handler.CreateSpace(pCtx, &pushapi.CreateSpaceRequest{
+			SpaceKey:         spaceKey,
+			AccountSignature: []byte("bad-signature"),
+		})
+		require.ErrorIs(t, err, pushapi.ErrInvalidSignature)
+		assert.Nil(t, resp)
+	})
+
+	t.Run("space-exists", func(t *testing.T) {
+		fx := newFixture(t)
+		acc := newAccount()
+		spaceKey, signature := newSpaceRegistration(acc.GetPublic().Account())
+
+		ak, _ := acc.GetPublic().Marshall()
+		pCtx := peer.CtxWithIdentity(ctx, ak)
+
+		fx.spaceRepo.EXPECT().Create(pCtx, domain.Space{
+			Id:     base58.Encode(spaceKey),
+			Author: acc.GetPublic().Account(),
+		}).Return(spacerepo.ErrSpaceExists)
+
+		resp, err := fx.handler.CreateSpace(pCtx, &pushapi.CreateSpaceRequest{
+			SpaceKey:         spaceKey,
+			AccountSignature: signature,
+		})
+		require.ErrorIs(t, err, pushapi.ErrSpaceExists)
+		assert.Nil(t, resp)
+	})
+}
+
+func TestHandler_RemoveSpace(t *testing.T) {
+	t.Run("success", func(t *testing.T) {
+		fx := newFixture(t)
+		acc := newAccount()
+		spaceKey, signature := newSpaceRegistration(acc.GetPublic().Account())
+
+		ak, _ := acc.GetPublic().Marshall()
+		pCtx := peer.CtxWithIdentity(ctx, ak)
+
+		fx.spaceRepo.EXPECT().Remove(pCtx, domain.Space{
+			Id:     base58.Encode(spaceKey),
+			Author: acc.GetPublic().Account(),
+		}).Return(nil)
+
+		resp, err := fx.handler.RemoveSpace(pCtx, &pushapi.RemoveSpaceRequest{
+			SpaceKey:         spaceKey,
+			AccountSignature: signature,
+		})
+		require.NoError(t, err)
+		assert.NotNil(t, resp)
+	})
+
+	t.Run("space-not-found", func(t *testing.T) {
+		fx := newFixture(t)
+		acc := newAccount()
+		spaceKey, signature := newSpaceRegistration(acc.GetPublic().Account())
+
+		ak, _ := acc.GetPublic().Marshall()
+		pCtx := peer.CtxWithIdentity(ctx, ak)
+
+		fx.spaceRepo.EXPECT().Remove(pCtx, domain.Space{
+			Id:     base58.Encode(spaceKey),
+			Author: acc.GetPublic().Account(),
+		}).Return(spacerepo.ErrSpaceNotFound)
+
+		resp, err := fx.handler.RemoveSpace(pCtx, &pushapi.RemoveSpaceRequest{
+			SpaceKey:         spaceKey,
+			AccountSignature: signature,
+		})
+		require.ErrorIs(t, err, spacerepo.ErrSpaceNotFound)
+		assert.Nil(t, resp)
+	})
+}
+
 func newNotifyRequest(accKey crypto.PrivKey, payload []byte, rawTopics ...*pushapi.Topic) *pushapi.NotifyRequest {
 	var msg *pushapi.Message
 	if payload != nil {
@@ -347,6 +451,13 @@ func newTopic(topic string) *pushapi.Topic {
 	}
 }
 
+func newSpaceRegistration(identity string) (spaceKey []byte, signature []byte) {
+	privKey, pubKey, _ := crypto.GenerateRandomEd25519KeyPair()
+	signature, _ = privKey.Sign([]byte(identity))
+	spaceKey, _ = pubKey.Raw()
+	return spaceKey, signature
+}
+
 type testConfig struct{}
 
 func (t testConfig) Init(a *app.App) (err error) {
@@ -360,4 +471,3 @@ func (t testConfig) Name() (name string) {
 func (t testConfig) GetMetric() metric.Config {
 	return metric.Config{}
 }
-
